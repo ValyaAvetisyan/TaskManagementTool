@@ -3,6 +3,7 @@ package com.example.taskmanagementtool.model;
 import com.example.taskmanagementtool.enumPackage.Gender;
 import com.example.taskmanagementtool.enumPackage.Role;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Table(name = "user")
 @Entity
+@Builder
 public class User {
     @Column
     @Id
