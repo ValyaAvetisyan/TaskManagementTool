@@ -2,7 +2,8 @@
 SQLyog Ultimate v10.42 
 MySQL - 5.5.5-10.1.28-MariaDB : Database - task_management_tool
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -29,8 +30,8 @@ CREATE TABLE `comment` (
   PRIMARY KEY (`id`),
   KEY `from_id` (`from_id`),
   KEY `to_id` (`to_id`),
-  CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`from_id`) REFERENCES `issue` (`id`),
-  CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`to_id`) REFERENCES `issue` (`id`)
+  CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`from_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`to_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `comment` */
