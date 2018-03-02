@@ -17,15 +17,15 @@ public class Issue {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "reposter_id")
+
     @ManyToOne
-    private int reporterId;
-    @Column(name = "assign_to_id")
+    private User reporterId;
+
     @ManyToOne
-    private int assignToId;
-    @Column(name = "project_id")
+    private User assignToId;
+
     @ManyToOne
-    private int projectId;
+    private Project projectId;
     @Column
     private String name;
     @Column
