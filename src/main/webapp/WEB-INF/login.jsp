@@ -1,3 +1,5 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Home
@@ -12,5 +14,17 @@
 </head>
 <body>
 
+Login for Admin<br>
+<%--<spring:form action="/addAdmin" method="post" >--%>
+    <%--email:<spring:input path="email" title="email"/><br>--%>
+    <%--password:<spring:input path="password" title="password"/><br>--%>
+    <%--<input type="submit" value="ok">--%>
+<%--</spring:form>--%>
+<form action="<c:url value="/loginPage"/> " method="post" name="loginForm">
+    <input type="text" placeholder="email" name="j_email"/><br>
+    <input type="password" placeholder="password" name="j_password"/><br>
+    <button type="submit" class="btn btn-default">Login</button>
+</form>
+<br>
 </body>
 </html>

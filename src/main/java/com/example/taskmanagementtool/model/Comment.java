@@ -16,12 +16,12 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private int id;
-    @Column(name="from_id")
+
     @ManyToOne
-    private int fromId;
-    @Column(name = "to_id")
+    private User fromId;
+
     @ManyToOne
-    private int toId;
+    private User toId;
     @Column
     private String text;
     @Column
