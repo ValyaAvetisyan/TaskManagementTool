@@ -23,15 +23,15 @@ DROP TABLE IF EXISTS `comment`;
 
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `from_id` int(11) NOT NULL,
-  `to_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `issue_id` int(11) NOT NULL,
   `text` text NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `from_id` (`from_id`),
   KEY `to_id` (`to_id`),
-  CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`from_id`) REFERENCES `user` (`id`),
-  CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`to_id`) REFERENCES `user` (`id`)
+  CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`issue_id`) REFERENCES `issue` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `comment` */

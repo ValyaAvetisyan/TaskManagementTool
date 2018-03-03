@@ -18,10 +18,10 @@ public class Comment {
     private int id;
 
     @ManyToOne
-    private User fromId;
+    private User userId;
 
     @ManyToOne
-    private User toId;
+    private User issueId;
     @Column
     private String text;
     @Column
