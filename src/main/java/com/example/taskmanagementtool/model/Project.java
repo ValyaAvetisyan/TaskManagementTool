@@ -21,7 +21,6 @@ public class Project {
     @Column(name="start_date")
     private String startDate;
     @Column(name = "end_date")
-
-    private String endedDate;
+    private String endDate;
 
 }

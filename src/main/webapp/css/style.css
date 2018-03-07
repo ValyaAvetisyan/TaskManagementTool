@@ -1,0 +1,112 @@
+
+.header {
+    background-color: #333;
+    overflow: hidden;
+
+}
+
+.header a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.header a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.header a.active {
+    background-color: #4CAF50;
+    color: white;
+    margin-left: 500px;
+}
+.contentBig{
+    width: 1340px;
+    height: 420px;
+    background-color: #bebfbf;
+    border: 1px solid black;
+    margin-left: 106px;
+}
+.allUsers{
+    width:250px;
+    height:400px;
+    background-color:#E0E0E0;
+
+}
+.slider {
+    z-index: 9;
+    width: 700px;
+    height: 364px;
+    overflow: hidden;
+    margin: 0 0 7px;
+    position: relative;
+    margin-top: -423px;
+    margin-left: 366px;
+}
+.slider ul,
+.slider li {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+.slider ul {
+    width: 9999px;
+}
+.slider ul li {
+    list-style-type: none;
+    float: left;
+    width: 700px;
+    height: 290px;
+    margin-top: 24px;
+}
+.slider .nav {
+    position: absolute;
+    left: 15px;
+    bottom: 12px;
+}
+.slider .nav span {
+    opacity: 0.9;
+    background: #fff;
+    margin: 0 8px 0 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    display: block;
+    float: left;
+    box-shadow: 0 1px 2px #000;
+}
+.slider .nav span.on {
+    background: #2e9419;
+}
+.Guido{
+    width:625px;
+    height:334px;
+}
+.Brain{
+    width:625px;
+    height:334px;
+
+}
+.Dennis{
+    width:625px;
+    height:334px;
+
+}
+.Niklaus{
+    width:625px;
+    height:334px;
+
+}
+.allTasks{
+    width: 250px;
+    height: 374px;
+    background-color: #E0E0E0;
+    margin-left: 1090px;
+    margin-top: -357px;
+}
