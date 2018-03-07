@@ -19,12 +19,13 @@ public class Issue {
     private int id;
 
     @ManyToOne
+    @JoinColumn(name = "reporter_id")
     private User reporterId;
-
     @ManyToOne
+    @JoinColumn(name = "assign_to_id")
     private User assignToId;
-
     @ManyToOne
+    @JoinColumn(name = "project_id")
     private Project projectId;
     @Column
     private String name;
@@ -36,5 +37,5 @@ public class Issue {
     @Column(name = "created_date")
     private String createdDate;
     @Column(name = "end_date")
-    private Date endDate;
+    private String endDate;
 }
