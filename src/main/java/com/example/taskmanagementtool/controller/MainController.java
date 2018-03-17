@@ -45,6 +45,10 @@ public class MainController {
         CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal.getUser().getRole() == Role.ADMIN) {
             return "redirect:/admin";
+        } if (principal.getUser().getRole() == Role.USER) {
+            return "redirect:/user";
+        } if (principal.getUser().getRole() == Role.TEAM_LEAD) {
+            return "redirect:/teamLead";
         }
         return "redirect:/";
     }

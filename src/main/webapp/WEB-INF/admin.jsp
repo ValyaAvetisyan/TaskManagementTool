@@ -14,7 +14,7 @@
 </head>
 <body>
 Add user:
-<spring:form action="/addUser" modelAttribute="user" method="post" enctype="multipart/form-data">
+<spring:form action="/admin/addUser" modelAttribute="user" method="post" enctype="multipart/form-data">
     name: <spring:input path="name"/><br>
     surname: <spring:input path="surname"/><br>
     gender: <br> <form:radiobutton path="gender" value="male" label="male"/><br>
@@ -30,14 +30,14 @@ Add user:
 </spring:form><br>
 
 Add project:
-<spring:form action="/addProject" modelAttribute="project" method="post">
+<spring:form action="/admin/addProject" modelAttribute="project" method="post">
     name: <spring:input path="name"/><br>
     endDate: <form:input type="date" path="endDate"/>
     <input type="submit" value="Save"/><br>
 </spring:form><br>
 
 Add issue
-<spring:form action="/addIssue" modelAttribute="issue" method="post">
+<spring:form action="/admin/addIssue" modelAttribute="issue" method="post">
     reporter: <spring:select path="reporterId" items="${users}" itemLabel="name"/> <br>
     assign to: <spring:select path="assignToId" items="${users}" itemLabel="name"/> <br>
     project: <spring:select path="projectId" items="${projects}" itemLabel="name"/> <br>

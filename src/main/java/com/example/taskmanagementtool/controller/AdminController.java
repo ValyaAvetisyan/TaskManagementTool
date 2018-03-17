@@ -56,7 +56,7 @@ public class AdminController {
         return "admin";
     }
 
-    @PostMapping("/addUser")
+    @PostMapping("/admin/addUser")
     public String saveUser(ModelMap map, @Valid @ModelAttribute("user") User user, @RequestParam(value = "image") MultipartFile file, BindingResult result) throws IOException {
         map.addAttribute("users", userRepository.findAll());
         map.addAttribute("user", new User());
@@ -90,7 +90,7 @@ public class AdminController {
     }
 
 
-    @PostMapping("/addProject")
+    @PostMapping("/admin/addProject")
     public String addProject(ModelMap map, @Valid @ModelAttribute("project") Project project, BindingResult result) {
         map.addAttribute("project", new Project());
         StringBuilder sb = new StringBuilder();
@@ -114,7 +114,7 @@ public class AdminController {
     }
 
 
- @PostMapping("/addIssue")
+ @PostMapping("/admin/addIssue")
     public String addIssue(ModelMap map, @Valid @ModelAttribute("issue")Issue issue, BindingResult result) {
         map.addAttribute("issue", new Issue());
         StringBuilder sb = new StringBuilder();
