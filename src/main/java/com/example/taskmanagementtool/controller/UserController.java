@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -55,4 +57,20 @@ public class UserController {
         }
         return "login";
     }
+
+    @PostMapping(value = "/user/updateIssue")
+    public String printStatus(@ModelAttribute("issue")Issue issue,@RequestParam("id")int id) {
+      issue.setId(id);
+      issueRepository.save(issue);
+      return "redirect:/user";
+    }
+
+
+    @GetMapping(value = "/user/issueDetail")
+    public String changeUserData(@RequestParam("id") int id, ModelMap map) {
+    map.addAttribute("issue",issueRepository.findOne(id));
+    return "issueDetail";
+    }
+
+
 }

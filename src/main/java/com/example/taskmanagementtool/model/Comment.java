@@ -19,9 +19,8 @@ public class Comment {
 
     @ManyToOne
     private User userId;
-
     @ManyToOne
-    private User issueId;
+    private Issue issueId;
     @Column
     private String text;
     @Column

@@ -26,24 +26,43 @@
 </center>
 <div class="centerMyPage">
     <div class="myTasksDiv">
-        <div class="UserStatusDiv"><p>show status </p></div>
+        <%--<div class="UserStatusDiv"><p>show status </p>--%>
+            <%--<c:forEach items="${issues}" var="issue">--%>
+                <%--<a href="/user/printIssues?issueId=${issue.id}"> </a>--%>
+
+                <%--${issue.name}--%>
+                <%--${issue.status}--%>
+                <%--<a href="/user/editStatus?id=${issue.id}">edit</a>--%>
+                <%--<br>--%>
+            <%--</c:forEach>--%>
+
+        </div>
     </div>
     <div class="comment">
-        <div class="taskDiv"><p>selected task from all tasks</p>
+        <%--<div class="taskDiv">--%>
+            <p>selected task from all tasks</p>
 
             <c:forEach items="${issues}" var="issue">
                 <a href="/user/printIssues?issueId=${issue.id}}"> </a>
-                ${issue.name}
-                ${issue.description}
-                ${issue.status}
-                ${issue.createdDate}
-                ${issue.endDate}
+                ${issue.name}${issue.status}
+                <ul>
+                    <a href="/user/issueDetail?id=${issue.id}">more details</a>
+                    <%--<li><a href="/user/issueDetails?id=${issue.id}"> more details </a> </li>--%>
+                </ul>
             </c:forEach>
-
         </div>
         <div class="commentDiv">
 <textarea rows="4" cols="50" name="comment" form="userform" class="textAreaDiv">
 Enter text here...</textarea></div>
+
+            <c:forEach items="${comments}" var="comment"><br>
+                <a href="/user/addComment=${comment.text}}"></a>
+            </c:forEach>
+
+
+            </textarea>
+            <button type="submit" class="btn btn-default">Send</button>
+    </div>
     </div>
     <div class="allUsersDiv"><p>print all users</p>
         <c:forEach items="${users}" var="user"><br>

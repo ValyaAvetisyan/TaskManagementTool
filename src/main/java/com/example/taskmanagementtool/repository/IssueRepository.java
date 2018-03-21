@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface IssueRepository extends JpaRepository<Issue, Integer> {
     List<Issue> findAllByAssignToIdId(int id);
+    Issue findOneById(int id);
 }

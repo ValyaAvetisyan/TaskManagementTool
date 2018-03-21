@@ -41,9 +41,6 @@ Add issue
     reporter: <spring:select path="reporterId" items="${users}" itemLabel="name"/> <br>
     assign to: <spring:select path="assignToId" items="${users}" itemLabel="name"/> <br>
     project: <spring:select path="projectId" items="${projects}" itemLabel="name"/> <br>
-    <%--<form:select multiple="true" path="projectId">--%>
-        <%--<form:options items="${projects}" itemValue="name" itemLabel="name"/>--%>
-    <%--</form:select>--%>
     name: <spring:input path="name"/><br>
     description: <input type="text" name="description"><br>
     status: <br> <form:radiobutton path="status" value="TODO" label="TODO"/><br>
