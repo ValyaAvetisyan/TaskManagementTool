@@ -69,6 +69,8 @@ public class UserController {
     @GetMapping(value = "/user/issueDetail")
     public String changeUserData(@RequestParam("id") int id, ModelMap map) {
     map.addAttribute("issue",issueRepository.findOne(id));
+    map.addAttribute("user",userRepository.findAll());
+    map.addAttribute("project",projectRepository.findAll());
     return "issueDetail";
     }
 

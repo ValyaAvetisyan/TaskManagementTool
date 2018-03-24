@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>Home Page</title>
+    <link rel="icon" href="img/home.png" type="image/gif" sizes="16x16">
     <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
