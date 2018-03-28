@@ -2639,3 +2639,18 @@
 .iconsimg{
 	width: 20px;
 }
+.projectDivTeamLead{
+	width:200px;
+	height: 100px;
+}
+.issueDivTeamLead{
+	width: 250px;
+	height: 400px;
+	float: left;
+}
+.tableSize{
+	width: 100px;
+	height: 100px;
+	float: left;
+	overflow: scroll;
+}

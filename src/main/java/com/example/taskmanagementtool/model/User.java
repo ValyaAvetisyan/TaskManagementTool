@@ -19,7 +19,7 @@ public class User {
     @Column
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-   private int id;
+    private int id;
     @Column
     private String name;
     @Column
@@ -38,4 +38,8 @@ public class User {
     private Role role;
     @Column(name = "pic_url")
     private String picUrl;
+    @Column
+    private boolean verify;
+    @Column
+    private String token;
 }

@@ -22,8 +22,8 @@
 
     <!-- Header -->
     <header id="header">
-        <span class="avatar"><img src="img/sus.jpg" alt="" /></span>
-        <h1>Dear Developer<strong>  this is </strong>, your  Tasks<br />
+        <span class="avatar"><img src="/user/image?fileName=${user.picUrl}" alt="" /></span>
+        <h1>Dear Developer<strong>  this is </strong>, your  Tasks <br />
            Good Work</h1>
         <ul class="icons">
             <li><a href="https://twitter.com/?lang=en" ><img src="img/twitter.png" class="iconsimg" alt=""><span class="label">Twitter</span></a></li>

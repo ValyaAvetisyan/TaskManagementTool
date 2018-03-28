@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Home
@@ -95,38 +96,51 @@
                     </spring:form><br>
             </div>
             </div>
-            <div class="projectName">
-                    Add project:
-                    <spring:form action="/admin/addProject" modelAttribute="project" method="post">
-                        name: <spring:input path="name"/><br>
-                        endDate: <form:input type="date" path="endDate"/>
-                        <input type="submit" value="Save"/><br>
-                    </spring:form><br>
-            </div>
-        <div class="issuePart">
-            <div class="image fit">
-                Add issue
-                <spring:form action="/admin/addIssue" modelAttribute="issue" method="post">
-                    reporter: <spring:select path="reporterId" items="${users}" itemLabel="name"/> <br>
-                    assign to: <spring:select path="assignToId" items="${users}" itemLabel="name"/> <br>
-                    project: <spring:select path="projectId" items="${projects}" itemLabel="name"/> <br>
-                    name: <spring:input path="name"/><br>
-                    description: <input type="text" name="description"><br>
-                    status: <br> <form:radiobutton path="status" value="TODO" label="TODO"/><br>
-                    <form:radiobutton path="status" value="INPROGRESS" label="INPROGRESS"/><br>
-                    <form:radiobutton path="status" value="DONE" label="DONE"/><br>
-                    endDate: <form:input type="date" path="endDate"/>
-                    <input type="submit" value="Save"/><br>
-                </spring:form><br>
+
+
+        <div class="projectName">
+        <div class="image fit ">
+        Add project:
+        <spring:form action="/admin/addProject" modelAttribute="project" method="post">
+        name: <spring:input path="name"/>
+        endDate: <form:input type="date" path="endDate"/>
+        <input type="submit" value="Save"/><br>
+        </spring:form>
+        </div>
+        </div>
 
             </div>
-        </div>
-                <div class="image fit">
-                    <a href="homePage">Go Back</a>
-                </div>
-            </div>
-        </div>
+    <div class="divTable">
+    <table class="tableSize">
+
+        <tr>
+            <th>Developer's Name</th>
+            <th>Developer's surname</th>
+            <th>Developer's email</th>
+            <th>Developer's phone</th>
+            <th>Developer's role</th>
+            <th>Developer's gender</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+
+        </tr>
+        <c:forEach items="${users}" var="user">
+            <tr>
+                <td><a href="/admin">${user.name} </a> </td>
+                <td> ${user.surname}</td>
+                <td>${user.email}</td>
+                <td>${user.phone}</td>
+                <td>${user.role}</td>
+                <td>${user.gender}</td>
+                <td><img src="img/edit.png" alt="edit" class="editIcon"></td>
+                <td><img src="img/delete.png" alt="delete" class="deleteIcon"></td>
+
+            </tr>
+        </c:forEach>
+    </table>
     </div>
+
 </section>
 
 

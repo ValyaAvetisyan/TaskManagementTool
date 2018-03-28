@@ -4319,3 +4319,18 @@
 .issuePart{
 	width: 50%;
 }
+.editIcon{
+	width: 25px;
+	height: 25px;
+}
+.deleteIcon
+{
+	width: 25px;
+	height: 25px;
+}
+
+.divTable{
+	width: 100%;
+	height: 30%;
+	overflow: scroll;
+}

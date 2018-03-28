@@ -6,10 +6,10 @@
 
 $(function() {
 
-	// Vars.
-	// 	var	$window = $(window),
-	// 		$body = $('body'),
-	// 		$wrapper = $('#wrapper');
+	//Vars.
+		var $window = $(window),
+			$body = $('body'),
+			$wrapper = $('#wrapper');
 
 	// Breakpoints.
 		skel.breakpoints({

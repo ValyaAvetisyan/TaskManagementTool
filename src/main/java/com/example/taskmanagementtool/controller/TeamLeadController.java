@@ -2,11 +2,13 @@ package com.example.taskmanagementtool.controller;
 
 import com.example.taskmanagementtool.model.Issue;
 import com.example.taskmanagementtool.model.Project;
-import com.example.taskmanagementtool.model.User;
 import com.example.taskmanagementtool.repository.IssueRepository;
 import com.example.taskmanagementtool.repository.ProjectRepository;
 import com.example.taskmanagementtool.repository.UserRepository;
+import com.example.taskmanagementtool.security.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -14,11 +16,14 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class TeamLeadController {
@@ -28,16 +33,35 @@ public class TeamLeadController {
     private IssueRepository issueRepository;
     @Autowired
     private ProjectRepository projectRepository;
-
-    @GetMapping( value = "/teamLead")
-    public String userPage(ModelMap map){
-        map.addAttribute("issues", issueRepository.findAll());
-        map.addAttribute("issue", new Issue());
+    @GetMapping(value = "/teamLead")
+    public String TeamLeadPage(ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
+        CurrentUser currentUser = (CurrentUser) userDetails;
+        map.addAttribute("user", userRepository.findOneByEmail(currentUser.getUsername()));
+        map.addAttribute("issues", issueRepository.findAllByReporterIdId(currentUser.getId()));
         map.addAttribute("users", userRepository.findAll());
-        map.addAttribute("user", new User());
-        map.addAttribute("projects", projectRepository.findAll());
         map.addAttribute("project", new Project());
+        map.addAttribute("projects",projectRepository.findAll());
+        map.addAttribute("issue", new Issue());
         return "teamLead";
+    }
+
+    @GetMapping(value = "/teamLead/issues")
+    public String printIssue(@AuthenticationPrincipal UserDetails userDetails, @RequestParam(value = "issueId", required = false) int id, ModelMap map) {
+        boolean isValid = true;
+        if (id < 0) {
+            isValid = false;
+        }
+        CurrentUser currentUser = (CurrentUser) userDetails;
+        List<Issue> issues = issueRepository.findAllByReporterIdId(currentUser.getId());
+
+        if (Objects.isNull(issues)) {
+            isValid = false;
+        }
+        if (isValid) {
+            map.addAttribute("issues", issues);
+            return "teamLead";
+        }
+        return "login";
     }
     
     @PostMapping("/teamLead/addProject")

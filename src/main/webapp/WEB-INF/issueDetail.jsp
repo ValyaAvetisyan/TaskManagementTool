@@ -20,13 +20,24 @@
     name: <spring:input path="name"/><br>
     description: <spring:input path="description" type="text"/><br>
     status: ${issue.status} <br>
-    <form:radiobutton path="status" value="TODO" label="TODO" checked="${issue.status == 'TODO' ? 'checked' : '' }"/><br>
-    <form:radiobutton path="status" value="INPROGRESS" label="INPROGRESS" checked="${issue.status == 'INPROGRESS' ? 'checked' : '' }" /><br>
-    <form:radiobutton path="status" value="DONE" label="DONE" checked="${issue.status == 'DONE' ? 'checked' : '' }" /><br>
+    <form:radiobutton path="status" value="TODO" label="TODO"
+                      checked="${issue.status == 'TODO' ? 'checked' : '' }"/><br>
+    <form:radiobutton path="status" value="INPROGRESS" label="INPROGRESS"
+                      checked="${issue.status == 'INPROGRESS' ? 'checked' : '' }"/><br>
+    <form:radiobutton path="status" value="DONE" label="DONE"
+                      checked="${issue.status == 'DONE' ? 'checked' : '' }"/><br>
 
-    <input hidden value="${issue.id}" name="id">
+    <input type="hidden" value="${issue.id}" name="id">
     <input type="submit" value="Save"/><br>
 </spring:form><br>
+
+
+<spring:form action="/user/issue/addComment" modelAttribute="comment" method="post">
+    <spring:textarea path="text"/>
+
+    <spring:hidden path="issueId"/>
+    <input type="submit" value="Save"/><br>
+</spring:form>
 
 </body>
 </html>

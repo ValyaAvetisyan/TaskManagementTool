@@ -1,7 +1,9 @@
 package com.example.taskmanagementtool.controller;
 
+import com.example.taskmanagementtool.model.Comment;
 import com.example.taskmanagementtool.model.Issue;
 import com.example.taskmanagementtool.model.User;
+import com.example.taskmanagementtool.repository.CommentRepository;
 import com.example.taskmanagementtool.repository.IssueRepository;
 import com.example.taskmanagementtool.repository.ProjectRepository;
 import com.example.taskmanagementtool.repository.UserRepository;
@@ -11,10 +13,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -27,16 +26,17 @@ public class UserController {
     private IssueRepository issueRepository;
     @Autowired
     private ProjectRepository projectRepository;
+    @Autowired
+    private CommentRepository commentRepository;
 
-    @GetMapping( value = "/user")
-    public String userPage(ModelMap map,@AuthenticationPrincipal UserDetails userDetails){
-        CurrentUser currentUser=(CurrentUser) userDetails;
+    @GetMapping(value = "/user")
+    public String userPage(ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
+        CurrentUser currentUser = (CurrentUser) userDetails;
 
         map.addAttribute("issues", issueRepository.findAllByAssignToIdId(currentUser.getId()));
-        map.addAttribute("issue", new Issue());
-        map.addAttribute("users", userRepository.findAll());;
-        map.addAttribute("user",new User());
-    return "myPage";
+        map.addAttribute("users", userRepository.findAll());
+        map.addAttribute("user", userRepository.getOne(currentUser.getId()));
+        return "myPage";
     }
 
     @GetMapping(value = "/user/printIssue")
@@ -45,8 +45,8 @@ public class UserController {
         if (id < 0) {
             isValid = false;
         }
-        CurrentUser currentUser=(CurrentUser) userDetails;
-      List<Issue> issues =  issueRepository.findAllByAssignToIdId(currentUser.getId());
+        CurrentUser currentUser = (CurrentUser) userDetails;
+        List<Issue> issues = issueRepository.findAllByAssignToIdId(currentUser.getId());
 
         if (Objects.isNull(issues)) {
             isValid = false;
@@ -59,19 +59,36 @@ public class UserController {
     }
 
     @PostMapping(value = "/user/updateIssue")
-    public String printStatus(@ModelAttribute("issue")Issue issue,@RequestParam("id")int id) {
-      issue.setId(id);
-      issueRepository.save(issue);
-      return "redirect:/user";
+    public String printStatus(@ModelAttribute("issue") Issue issue, @RequestParam("id") int id) {
+        issue.setId(id);
+        issueRepository.save(issue);
+        return "redirect:/user";
     }
 
 
     @GetMapping(value = "/user/issueDetail")
     public String changeUserData(@RequestParam("id") int id, ModelMap map) {
-    map.addAttribute("issue",issueRepository.findOne(id));
-    map.addAttribute("user",userRepository.findAll());
-    map.addAttribute("project",projectRepository.findAll());
-    return "issueDetail";
+        Issue issue = issueRepository.findOne(id);
+        map.addAttribute("issue", issue);
+        map.addAttribute("users", userRepository.findAll());
+        map.addAttribute("projects", projectRepository.findAll());
+        map.addAttribute("comments", commentRepository.findAll());
+        Comment comment = new Comment();
+        comment.setIssueId(issue);
+        map.addAttribute("comment", comment);
+        return "issueDetail";
+    }
+    @RequestMapping( value = "/verify", method = RequestMethod.GET)
+    public  String verify(@RequestParam("token")String token, @RequestParam("email")String email){
+        User oneByEmail = userRepository.findOneByEmail(email);
+        if (oneByEmail!=null){
+            if (oneByEmail.getToken()!=null&&oneByEmail.getToken().equals(token)){
+                oneByEmail.setToken(null);
+                oneByEmail.setVerify(true);
+                userRepository.save(oneByEmail);
+            }
+        }
+        return "redirect:/login";
     }
 
 

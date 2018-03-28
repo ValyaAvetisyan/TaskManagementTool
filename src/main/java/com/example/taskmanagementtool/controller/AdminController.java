@@ -8,6 +8,7 @@ import com.example.taskmanagementtool.repository.CommentRepository;
 import com.example.taskmanagementtool.repository.IssueRepository;
 import com.example.taskmanagementtool.repository.ProjectRepository;
 import com.example.taskmanagementtool.repository.UserRepository;
+import com.example.taskmanagementtool.util.EmailServiceImpl;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,6 +30,7 @@ import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 @Controller
 public class AdminController {
@@ -43,8 +45,10 @@ public class AdminController {
     @Autowired
     private ProjectRepository projectRepository;
     @Autowired
-    private CommentRepository commentRepository;
-
+    private EmailServiceImpl emailService;
+    private static final String URL="http://localhost:8080/verify?token=%s&email=%s";
+    private static  final  String EMAIL_TEXT="Dear %s You are added to our company." +
+            "Please visit by link in order to activate your profile. %s";
     @GetMapping("/admin")
     public String userHome(ModelMap map) {
         map.addAttribute("users", userRepository.findAll());
@@ -57,15 +61,13 @@ public class AdminController {
     }
 
     @PostMapping("/admin/addUser")
-    public String saveUser(ModelMap map, @Valid @ModelAttribute("user") User user, @RequestParam(value = "image") MultipartFile file, BindingResult result) throws IOException {
-        map.addAttribute("users", userRepository.findAll());
-        map.addAttribute("user", new User());
-        File dir = new File(imageUploadPath);
+        public String saveUser(ModelMap map, @Valid @ModelAttribute("user") User user, @RequestParam(value = "image") MultipartFile file, BindingResult result) throws IOException {
+        File dir = new File(this.imageUploadPath);
         if (!dir.exists()) {
             dir.mkdir();
         }
         String picName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-        File picture = new File(imageUploadPath + picName);
+        File picture = new File(this.imageUploadPath+picName);
         file.transferTo(picture);
         user.setPicUrl(picName);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -76,7 +78,12 @@ public class AdminController {
             }
             return "redirect:/admin?message=" + sb.toString();
         }
+        user.setToken(UUID.randomUUID().toString());
         userRepository.save(user);
+
+        String url = String.format(URL, user.getToken(), user.getEmail());
+        String text = String.format(EMAIL_TEXT, user.getName(), url);
+        emailService.sendSimpleMessage(user.getEmail(), "Welcome", text);
 
         return "redirect:/admin";
 
@@ -84,9 +91,11 @@ public class AdminController {
 
     @RequestMapping(value = "/user/image", method = RequestMethod.GET)
     public void getImageAsByteArray(HttpServletResponse response, @RequestParam("fileName") String fileName) throws IOException {
-        InputStream in = new FileInputStream(imageUploadPath + fileName);
+        InputStream in = new FileInputStream(this.imageUploadPath + fileName);
         response.setContentType(MediaType.IMAGE_JPEG_VALUE);
         IOUtils.copy(in, response.getOutputStream());
+
+
     }
 
 
