@@ -12,7 +12,7 @@
 <html>
 <head>
     <title>TeamLeadPage</title>
-    <link rel="icon" href="img/user.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="/img/user.png" type="image/gif" sizes="16x16">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/mainUser.css" />
@@ -28,11 +28,11 @@
         <h1>Dear Developer<strong>  this is </strong>, your  Tasks <br />
             Good Work</h1>
         <ul class="icons">
-            <li><a href="https://twitter.com/?lang=en" ><img src="img/twitter.png" class="iconsimg" alt=""><span class="label">Twitter</span></a></li>
-            <li><a href="https://www.facebook.com/" ><img src="img/fb.png" class="iconsimg" alt=""><span class="label">Facebook</span></a></li>
-            <li><a href="https://www.instagram.com/?hl=en"><img src="img/insta.png" class="iconsimg" alt=""><span class="label">Instagram</span></a></li>
-            <li><a href="https://www.facebook.com/" ><img src="img/500px.png" class="iconsimg" alt=""><span class="label">500px</span></a></li>
-            <li><a href="https://mail.google.com/mail/u/0/#inbox"><img src="img/gmail.png" class="iconsimg" alt=""><span class="label">Email</span></a></li>
+            <li><a href="https://twitter.com/?lang=en" ><img src="/img/twitter.png" class="iconsimg" alt=""><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/" ><img src="/img/fb.png" class="iconsimg" alt=""><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.instagram.com/?hl=en"><img src="/img/insta.png" class="iconsimg" alt=""><span class="label">Instagram</span></a></li>
+            <li><a href="https://www.facebook.com/" ><img src="/img/500px.png" class="iconsimg" alt=""><span class="label">500px</span></a></li>
+            <li><a href="https://mail.google.com/mail/u/0/#inbox"><img src="/img/gmail.png" class="iconsimg" alt=""><span class="label">Email</span></a></li>
         </ul>
     </header>
 

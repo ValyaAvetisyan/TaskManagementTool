@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Home Page</title>
-    <link rel="icon" href="img/home.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="/img/home.png" type="image/gif" sizes="16x16">
     <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -35,11 +35,11 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <div class="slider">
         <ul>
-            <li><img src="img/1.jpg" alt=""></li>
-            <li><img class="Guido" src="img/2.jpg" alt=""/></li>
-            <li><img class="Brain"src="img/3.jpg" alt=""/></li>
-            <li><img class="Dennis"src="img/4.jpg" alt=""/></li>
-            <li><img class="Niklaus"src="img/1.jpg" alt=""/></li>
+            <li><img src="/img/1.jpg" alt=""></li>
+            <li><img class="Guido" src="/img/2.jpg" alt=""/></li>
+            <li><img class="Brain"src="/img/3.jpg" alt=""/></li>
+            <li><img class="Dennis"src="/img/4.jpg" alt=""/></li>
+            <li><img class="Niklaus"src="/img/1.jpg" alt=""/></li>
         </ul>
     </div>
     <script type="text/javascript">

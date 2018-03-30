@@ -12,7 +12,7 @@
 <html>
 <head>
     <title>Admin</title>
-    <link rel="icon" href="img/admin.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="/img/admin.png" type="image/gif" sizes="16x16">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css\main.css" />
@@ -28,7 +28,7 @@
 <!-- Banner -->
 <section class="banner full">
     <article>
-        <img src="img/photo_bg.jpg" alt="" />
+        <img src="/img/photo_bg.jpg" alt="" />
         <div class="inner">
             <header>
                 <p>the appearance of our website</p>
@@ -37,7 +37,7 @@
         </div>
     </article>
     <article>
-        <img src="img/photo_bg.jpg" alt="" />
+        <img src="/img/photo_bg.jpg" alt="" />
         <div class="inner">
             <header>
                 <p>Lorem ipsum dolor sit amet nullam feugiat</p>
@@ -46,7 +46,7 @@
         </div>
     </article>
     <article>
-        <img src="img/photo_bg.jpg"  alt="" />
+        <img src="/img/photo_bg.jpg"  alt="" />
         <div class="inner">
             <header>
                 <p>Sed cursus aliuam veroeros lorem ipsum nullam</p>
@@ -55,7 +55,7 @@
         </div>
     </article>
     <article>
-        <img src="img/photo_bg.jpg"  alt="" />
+        <img src="/img/photo_bg.jpg"  alt="" />
         <div class="inner">
             <header>
                 <p>Adipiscing lorem ipsum feugiat sed phasellus consequat</p>
@@ -64,7 +64,7 @@
         </div>
     </article>
     <article>
-        <img src="img/photo_bg.jpg"  alt="" />
+        <img src="/img/photo_bg.jpg"  alt="" />
         <div class="inner">
             <header>
                 <p>Ipsum dolor sed magna veroeros lorem ipsum</p>
@@ -133,8 +133,8 @@
                 <td>${user.phone}</td>
                 <td>${user.role}</td>
                 <td>${user.gender}</td>
-                <td><img src="img/edit.png" alt="edit" class="editIcon"></td>
-                <td><img src="img/delete.png" alt="delete" class="deleteIcon"></td>
+                <td><img src="/img/edit.png" alt="edit" class="editIcon"></td>
+                <td><img src="/img/delete.png" alt="delete" class="deleteIcon"></td>
 
             </tr>
         </c:forEach>

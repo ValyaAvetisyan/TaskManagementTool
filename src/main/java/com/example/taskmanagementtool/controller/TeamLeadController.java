@@ -6,6 +6,7 @@ import com.example.taskmanagementtool.repository.IssueRepository;
 import com.example.taskmanagementtool.repository.ProjectRepository;
 import com.example.taskmanagementtool.repository.UserRepository;
 import com.example.taskmanagementtool.security.CurrentUser;
+import jdk.internal.org.objectweb.asm.Handle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,6 +23,7 @@ import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
