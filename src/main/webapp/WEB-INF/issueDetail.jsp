@@ -68,8 +68,11 @@
                                   checked="${issue.status == 'INPROGRESS' ? 'checked' : '' }"/><br>
                 <form:radiobutton path="status" value="DONE" label="DONE"
                                   checked="${issue.status == 'DONE' ? 'checked' : '' }"/><br>
-                <input type="hidden" value="${issue.id}" name="id">
+                <spring:hidden path="${issue.id}" name="id"/>
                     </div><br>
+    <div class="wrap-input100 bg1 rs1-wrap-input100">
+        endDate: <form:input type="date" path="endDate"/>
+    </div>
                 <input type="submit" value="Save"/><br>
             </spring:form><br>
 
