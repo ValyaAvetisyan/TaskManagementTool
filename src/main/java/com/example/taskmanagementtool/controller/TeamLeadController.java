@@ -108,5 +108,10 @@ public class TeamLeadController {
         return "redirect:/teamLead";
     }
 
-
+    @GetMapping("/teamLead/deleteIssue")
+    public String deleteIssue(@RequestParam("id") int id) {
+        Issue issue = issueRepository.findOneById(id);
+        issueRepository.delete(issue);
+        return "redirect:/teamLead";
+    }
 }

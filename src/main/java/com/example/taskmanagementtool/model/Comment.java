@@ -16,10 +16,10 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private int id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User userId;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "issue_id")
     private Issue issueId;
     @Column

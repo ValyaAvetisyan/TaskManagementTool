@@ -46,6 +46,8 @@
             <th>Developer</th>
             <th>Issue's Name</th>
             <th>Issues's Status</th>
+            <th>Edit</th>
+            <th>Delete</th>
 
         </tr>
         <c:forEach items="${issues}" var="issue">
@@ -53,6 +55,8 @@
                 <td><a href="/teamLead/issues?issueId=">${issue.name} </a> </td>
                 <td> ${issue.assignToId.name}</td>
                 <td>${issue.status}</td>
+                <td><a href="/teamLead/editIssue?id=${issue.id}"><img src="/img/edit.png" alt="edit" class="editIcon"></a></td>
+                <td> <a href="/teamLead/deleteIssue?id=${issue.id}"><img src="/img/delete.png" alt="delete" class="deleteIcon"></a></td>
             </tr>
         </c:forEach>
     </table>
@@ -62,11 +66,11 @@
         <div class="issueDivTeamLead">
         Add issue
         <spring:form action="/teamLead/addIssue" modelAttribute="issue" method="post">
-            reporter: <spring:select path="reporterId" items="${users}" itemLabel="name"/> <br>
-            assign to: <spring:select path="assignToId" items="${users}" itemLabel="name"/> <br>
-            project: <spring:select path="projectId" items="${projects}" itemLabel="name"/> <br>
+            reporter: <spring:select path="reporterId" items="${users}" itemLabel="name" class="backCol"/> <br>
+            assign to: <spring:select path="assignToId" items="${users}" itemLabel="name" class="backCol"/> <br>
+            project: <spring:select path="projectId" items="${projects}" itemLabel="name" class="backCol"/> <br>
             name: <spring:input path="name"/><br>
-            description: <input type="text" name="description"><br>
+            description: <spring:input path="description" type="text"/><br>
             status: <br> <form:radiobutton path="status" value="TODO" label="TODO"/><br>
             <form:radiobutton path="status" value="INPROGRESS" label="INPROGRESS"/><br>
             <form:radiobutton path="status" value="DONE" label="DONE"/><br>

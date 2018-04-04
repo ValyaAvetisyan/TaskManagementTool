@@ -72,10 +72,10 @@ public class UserController {
         map.addAttribute("issue", issue);
         map.addAttribute("users", userRepository.findAll());
         map.addAttribute("projects", projectRepository.findAll());
-        map.addAttribute("comments", commentRepository.findAll());
         Comment comment = new Comment();
         comment.setIssueId(issue);
         map.addAttribute("comment", comment);
+        map.addAttribute("comments", commentRepository.findAllByIssueIdId(id));
         return "issueDetail";
     }
     @RequestMapping( value = "/verify", method = RequestMethod.GET)

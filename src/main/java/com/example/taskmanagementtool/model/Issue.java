@@ -4,6 +4,7 @@ import com.example.taskmanagementtool.enumPackage.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.engine.internal.Cascade;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -18,13 +19,13 @@ public class Issue {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "reporter_id")
     private User reporterId;
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "assign_to_id")
     private User assignToId;
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "project_id")
     private Project projectId;
     @Column

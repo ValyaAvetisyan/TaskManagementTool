@@ -30,6 +30,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("j_password")
                 .defaultSuccessUrl("/loginSuccess")
                 .and()
+                .rememberMe()
+                .and()
                 .logout()
                 .logoutSuccessUrl("/")
                 .and()

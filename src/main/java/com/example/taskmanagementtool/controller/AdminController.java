@@ -143,7 +143,12 @@ public class AdminController {
         issueRepository.save(issue);
         return "redirect:/admin";
     }
-
+    @GetMapping("/admin/deleteUser")
+    public String deleteUser(@RequestParam("id") int id) {
+        User user = userRepository.findOneById(id);
+        userRepository.delete(user);
+        return "redirect:/admin";
+    }
 }
 
 

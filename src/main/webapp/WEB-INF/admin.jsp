@@ -133,9 +133,8 @@
                 <td>${user.phone}</td>
                 <td>${user.role}</td>
                 <td>${user.gender}</td>
-                <td><img src="/img/edit.png" alt="edit" class="editIcon"></td>
-                <td><img src="/img/delete.png" alt="delete" class="deleteIcon"></td>
-
+                <td><a href="/admin/edit?id=${user.id}"><img src="/img/edit.png" alt="edit" class="editIcon"></a></td>
+                <td> <a href="/admin/deleteUser?id=${user.id}"><img src="/img/delete.png" alt="delete" class="deleteIcon"></a></td>
             </tr>
         </c:forEach>
     </table>
