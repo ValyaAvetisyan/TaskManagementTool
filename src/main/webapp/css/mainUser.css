@@ -2667,3 +2667,8 @@
 	color: black;
 }
 
+.issueName{
+	border: 1px solid black;
+	height: 29px;
+	width: 220px;
+}

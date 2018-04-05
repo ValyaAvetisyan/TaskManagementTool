@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -20,7 +21,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @SpringBootApplication
 @EnableWebMvc
-@Async
+@EnableAsync
 public class TaskmanagementtoolApplication extends WebMvcConfigurerAdapter implements CommandLineRunner {
 
 	public static void main(String[] args) {

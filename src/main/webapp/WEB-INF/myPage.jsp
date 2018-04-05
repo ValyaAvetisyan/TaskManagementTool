@@ -28,7 +28,7 @@
 <!-- Header -->
     <header id="header">
         <span class="avatar"><img src="/user/image?fileName=${user.picUrl}" alt="" /></span>
-        <h1>Dear${user.name}<strong>  this is </strong>, your  Tasks<br />
+        <h1>Dear  ${user.name}<strong>  this is </strong>, your  Tasks<br />
            Good Work</h1>
         <ul class="icons">
             <li><a href="https://twitter.com/?lang=en" ><img src="/img/twitter.png" class="iconsimg" alt=""><span class="label">Twitter</span></a></li>
@@ -46,16 +46,18 @@
 
         <section class="thumbnails">
             <c:forEach items="${issues}" var="issue">
+                <div>
+                    <%--<a href="/user/printIssues?issueId=" class="issueName"></a>--%>
+                    ${issue.name}<br>
+                    ${issue.description}<br>
+                    ${issue.status}<br>
+                    ${issue.reporterId}<br>
+                    ${issue.endDate}<br>
 
-            <div>
-
-                    <a href="/user/printIssues?issueId=">${issue.name} </a>
-                    ${issue.status}<br>${issue.endDate}
                     <ul>
                         <a href="/user/issueDetail?id=${issue.id}">more details</a>
                     </ul>
             </div>
-
             </c:forEach>
         </section>
 

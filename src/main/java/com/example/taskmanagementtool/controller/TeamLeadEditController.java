@@ -43,9 +43,9 @@ public class TeamLeadEditController {
         map.addAttribute("users", userRepository.findAll());
         map.addAttribute("projects", projectRepository.findAll());
         Comment comment = new Comment();
-        comment.setIssueId(issue);
+        comment.setIssue(issue);
         map.addAttribute("comment", comment);
-        map.addAttribute("comments", commentRepository.findAllByIssueIdId(id));
+        map.addAttribute("comments", commentRepository.findAllByIssueId(id));
         return "teamLeadEdit";
         }
 

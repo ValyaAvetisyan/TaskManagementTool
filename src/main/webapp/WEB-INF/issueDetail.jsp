@@ -46,21 +46,21 @@
         <%--contact100-form validate-form--%>
 
             <spring:form action="/user/updateIssue" modelAttribute="issue" method="post">
-                reporter: <spring:select path="reporterId" items="${users}" itemLabel="name" class="wrap-input100 validate-input bg1"/> <br>
-            </div>
+                <%--reporter: <spring:select path="reporterId" items="${users}" itemLabel="name" class="wrap-input100 validate-input bg1"/> <br>--%>
+
             <div class="wrap-input100 validate-input bg1 rs1-wrap-input100">
                 assign to: <spring:select path="assignToId" items="${users}" itemLabel="name" value="${issue.assignToId}" class="input100"/> <br>
             </div>
 
-            <div class="wrap-input100 bg1 rs1-wrap-input100">
-                project: <spring:select path="projectId" items="${projects}" itemLabel="name" class="input100" /> <br>
-            </div>
-                <div class="wrap-input100 bg1 rs1-wrap-input100">
-                name: <spring:input path="name" class="input100"  /><br>
-                </div>
-                <div class="wrap-input100 bg1 rs1-wrap-input100">
-                description: <spring:input path="description" type="text" class="input100" /><br>
-                </div>
+            <%--<div class="wrap-input100 bg1 rs1-wrap-input100">--%>
+                <%--project: <spring:select path="projectId" items="${projects}" itemLabel="name" class="input100" /> <br>--%>
+            <%--</div>--%>
+                <%--<div class="wrap-input100 bg1 rs1-wrap-input100">--%>
+                <%--name: <spring:input path="name" class="input100"  /><br>--%>
+                <%--</div>--%>
+                <%--<div class="wrap-input100 bg1 rs1-wrap-input100">--%>
+                <%--description: <spring:input path="description" type="text" class="input100" /><br>--%>
+                <%--</div>--%>
                 <div class="wrap-input100 bg1 rs1-wrap-input100">
                 status: ${issue.status} <br>
                 <form:radiobutton path="status" value="TODO" label="TODO"
@@ -77,11 +77,12 @@
                 <input type="submit" value="Save"/><br>
             </spring:form><br>
 </div>
+</div>
 
 <br>
     <c:forEach items="${comments}" var="comment">
     <a href="/user/issueDetail?id=">${comment.text} <br></a>
-        ${comment.userId.name}<br>
+        ${comment.user.name}<br>
         ${comment.timestamp}<br>
     </c:forEach>
 
@@ -91,7 +92,7 @@
                 <span class="label-input100">Comment</span>
                 <spring:form action="/user/issue/addComment" modelAttribute="comment" method="post">
                     <spring:textarea path="text" class="input100"/>
-                    <spring:hidden path="issueId"/>
+                    <spring:hidden path="issue"/>
                     <input type="submit" value="Save"/><br>
                 </spring:form>
             </div>

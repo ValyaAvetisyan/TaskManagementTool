@@ -16,12 +16,12 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private int id;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User userId;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "issue_id")
-    private Issue issueId;
+    @ManyToOne()
+//    @JoinColumn(name = "user_id")
+    private User user;
+    @ManyToOne()
+//    @JoinColumn(name = "issue_id")
+    private Issue issue;
     @Column
     private String text;
     @Column

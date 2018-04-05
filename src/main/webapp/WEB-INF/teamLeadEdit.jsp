@@ -81,7 +81,7 @@
 <br>
 <c:forEach items="${comments}" var="comment">
     <a href="/teamLead/editIssue?id=">${comment.text} <br></a>
-    ${comment.userId.name}<br>
+    ${comment.user.name}<br>
     ${comment.timestamp}<br>
 </c:forEach>
 
@@ -91,7 +91,7 @@
     <span class="label-input100">Comment</span>
     <spring:form action="/teamLead/issue/addComment" modelAttribute="comment" method="post">
         <spring:textarea path="text" class="input100"/>
-        <spring:hidden path="issueId"/>
+        <spring:hidden path="issue"/>
         <input type="submit" value="Save"/><br>
     </spring:form>
 </div>

@@ -59,9 +59,8 @@ public class UserController {
     }
 
     @PostMapping(value = "/user/updateIssue")
-    public String printStatus(@ModelAttribute("issue") Issue issue, @RequestParam("id") int id) {
-        issue.setId(id);
-        issueRepository.save(issue);
+    public String printStatus(@ModelAttribute("issue") Issue issue) {
+        issueRepository.updateIssueById(issue.getAssignToId(),issue.getStatus().name(),issue.getEndDate(),issue.getId());
         return "redirect:/user";
     }
 
@@ -73,16 +72,17 @@ public class UserController {
         map.addAttribute("users", userRepository.findAll());
         map.addAttribute("projects", projectRepository.findAll());
         Comment comment = new Comment();
-        comment.setIssueId(issue);
+        comment.setIssue(issue);
         map.addAttribute("comment", comment);
-        map.addAttribute("comments", commentRepository.findAllByIssueIdId(id));
+        map.addAttribute("comments", commentRepository.findAllByIssueId(id));
         return "issueDetail";
     }
-    @RequestMapping( value = "/verify", method = RequestMethod.GET)
-    public  String verify(@RequestParam("token")String token, @RequestParam("email")String email){
+
+    @RequestMapping(value = "/verify", method = RequestMethod.GET)
+    public String verify(@RequestParam("token") String token, @RequestParam("email") String email) {
         User oneByEmail = userRepository.findOneByEmail(email);
-        if (oneByEmail!=null){
-            if (oneByEmail.getToken()!=null&&oneByEmail.getToken().equals(token)){
+        if (oneByEmail != null) {
+            if (oneByEmail.getToken() != null && oneByEmail.getToken().equals(token)) {
                 oneByEmail.setToken(null);
                 oneByEmail.setVerify(true);
                 userRepository.save(oneByEmail);
