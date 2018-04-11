@@ -43,6 +43,7 @@
     <table class="tableSize">
 
         <tr>
+            <th>Issue's Type</th>
             <th>Developer</th>
             <th>Issue's Name</th>
             <th>Issues's Status</th>
@@ -52,8 +53,9 @@
         </tr>
         <c:forEach items="${issues}" var="issue">
             <tr>
-                <td><a href="/teamLead/issues?issueId=">${issue.name} </a> </td>
+                <td><a href="/teamLead/issues?issueId=">${issue.type} </a> </td>
                 <td> ${issue.assignToId.name}</td>
+                <td> ${issue.name}</td>
                 <td>${issue.status}</td>
                 <td><a href="/teamLead/editIssue?id=${issue.id}"><img src="/img/edit.png" alt="edit" class="editIcon"></a></td>
                 <td> <a href="/teamLead/deleteIssue?id=${issue.id}"><img src="/img/delete.png" alt="delete" class="deleteIcon"></a></td>
@@ -69,6 +71,9 @@
             reporter: <spring:select path="reporterId" items="${users}" itemLabel="name" class="backCol"/> <br>
             assign to: <spring:select path="assignToId" items="${users}" itemLabel="name" class="backCol"/> <br>
             project: <spring:select path="projectId" items="${projects}" itemLabel="name" class="backCol"/> <br>
+            type: <br> <form:radiobutton path="type" value="TASK" label="TASK"/><br>
+            <form:radiobutton path="type" value="TEST" label="TEST"/><br>
+            <form:radiobutton path="type" value="BUG" label="BUG"/><br>
             name: <spring:input path="name"/><br>
             description: <spring:input path="description" type="text"/><br>
             status: <br> <form:radiobutton path="status" value="TODO" label="TODO"/><br>

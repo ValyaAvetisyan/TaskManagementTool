@@ -2654,6 +2654,11 @@
 	float: left;
 	overflow: scroll;
 }
+.userTableSize{
+	width: 100px;
+	height: 100px;
+	float: left
+}
 .editIcon{
 	width: 25px;
 	height: 25px;
@@ -2671,4 +2676,9 @@
 	border: 1px solid black;
 	height: 29px;
 	width: 220px;
+}
+.userTableDiv{
+	width: 50%;
+	height: 50%;
+	margin: 31px 7px 10px 473px;
 }

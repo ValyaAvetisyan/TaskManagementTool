@@ -29,6 +29,6 @@ public class AdminEditController {
     @PostMapping(value = "/admin/updateUser")
     public String printUser(@ModelAttribute("user") User user ) {
          userRepository.updateUserById(user.getName(),user.getSurname(),user.getRole().name(),user.getId());
-        return "redirect:/admin";
+        return "redirect:/adminEdit";
     }
 }

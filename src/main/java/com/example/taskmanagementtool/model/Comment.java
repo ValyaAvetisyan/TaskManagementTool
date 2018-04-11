@@ -20,7 +20,7 @@ public class Comment {
 //    @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne()
-//    @JoinColumn(name = "issue_id")
+//    @JoinColumn(name = "issue_id")Will
     private Issue issue;
     @Column
     private String text;

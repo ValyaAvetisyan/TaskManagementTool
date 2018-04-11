@@ -1,5 +1,6 @@
 package com.example.taskmanagementtool.model;
 
+import com.example.taskmanagementtool.enumPackage.IssueType;
 import com.example.taskmanagementtool.enumPackage.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +29,9 @@ public class Issue {
     @ManyToOne()
     @JoinColumn(name = "project_id")
     private Project projectId;
+    @Column()
+    @Enumerated(EnumType.STRING)
+    private IssueType type;
     @Column
     private String name;
     @Column

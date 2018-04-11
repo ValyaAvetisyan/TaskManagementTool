@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import javax.persistence.*;
 
 @Data
@@ -22,24 +23,33 @@ public class User {
     private int id;
     @Column
     private String name;
+
     @Column
     private String surname;
+
     @Column
     @Enumerated(EnumType.STRING)
     private Gender gender;
     @Column
     private String phone;
+
     @Column
     private String email;
+
     @Column
     private String password;
+
     @Column(name = "user_role")
     @Enumerated(EnumType.STRING)
+
     private Role role;
+
     @Column(name = "pic_url")
     private String picUrl;
+
     @Column
     private boolean verify;
+
     @Column
     private String token;
 }

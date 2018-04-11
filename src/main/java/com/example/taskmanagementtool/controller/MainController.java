@@ -2,7 +2,6 @@ package com.example.taskmanagementtool.controller;
 
 import com.example.taskmanagementtool.enumPackage.Role;
 import com.example.taskmanagementtool.model.User;
-import com.example.taskmanagementtool.repository.IssueRepository;
 import com.example.taskmanagementtool.repository.UserRepository;
 import com.example.taskmanagementtool.security.CurrentUser;
 import org.slf4j.Logger;
@@ -57,7 +56,6 @@ public class MainController {
     }
 
     @GetMapping("/login")
-
     public String log(ModelMap map) {
         map.addAttribute("users", userRepository.findAll());
         map.addAttribute("user", new User());

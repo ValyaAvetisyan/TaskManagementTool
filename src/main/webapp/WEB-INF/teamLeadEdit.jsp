@@ -56,6 +56,16 @@
         project: <spring:select path="projectId" items="${projects}" itemLabel="name" class="input100" /> <br>
     </div>
     <div class="wrap-input100 bg1 rs1-wrap-input100">
+        type: ${issue.type} <br>
+        <form:radiobutton path="type" value="TASK" label="TASK"
+                          checked="${issue.type == 'TASK' ? 'checked' : '' }"/><br>
+        <form:radiobutton path="type" value="TEST" label="TEST"
+                          checked="${issue.type == 'TEST' ? 'checked' : '' }"/><br>
+        <form:radiobutton path="type" value="BUG" label="BUG"
+                          checked="${issue.type == 'BUG' ? 'checked' : '' }"/><br>
+        <input type="hidden" value="${issue.id}" name="id">
+    </div><br>
+    <div class="wrap-input100 bg1 rs1-wrap-input100">
         name: <spring:input path="name" class="input100" /><br>
     </div>
     <div class="wrap-input100 bg1 rs1-wrap-input100">

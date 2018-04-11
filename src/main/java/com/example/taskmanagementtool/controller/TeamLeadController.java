@@ -6,6 +6,7 @@ import com.example.taskmanagementtool.repository.IssueRepository;
 import com.example.taskmanagementtool.repository.ProjectRepository;
 import com.example.taskmanagementtool.repository.UserRepository;
 import com.example.taskmanagementtool.security.CurrentUser;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,7 +23,6 @@ import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,7 +35,7 @@ public class TeamLeadController {
     @Autowired
     private ProjectRepository projectRepository;
     @GetMapping(value = "/teamLead")
-    public String TeamLeadPage(ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
+    public String teamLeadPage(ModelMap map, @AuthenticationPrincipal UserDetails userDetails) {
         CurrentUser currentUser = (CurrentUser) userDetails;
         map.addAttribute("user", userRepository.findOneByEmail(currentUser.getUsername()));
         map.addAttribute("issues", issueRepository.findAllByReporterIdId(currentUser.getId()));
@@ -44,6 +44,7 @@ public class TeamLeadController {
         map.addAttribute("projects",projectRepository.findAll());
         map.addAttribute("issue", new Issue());
         return "teamLead";
+
     }
 
     @GetMapping(value = "/teamLead/issues")
